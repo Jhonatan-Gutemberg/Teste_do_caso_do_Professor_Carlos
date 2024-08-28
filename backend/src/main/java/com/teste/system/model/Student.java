@@ -2,12 +2,10 @@ package com.teste.system.model;
 
 import java.util.Date;
 
-import org.springframework.boot.autoconfigure.domain.EntityScan;
-import org.springframework.stereotype.Indexed;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.teste.system.dto.StudentRecord;
 
-import jakarta.annotation.Generated;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -26,9 +24,10 @@ public class Student {
 
     private String email;
     private String address;
-    @NotBlank
+
     private String registration;
-    @NotBlank
+
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy")
     private Date dateBirth;
 
     public Student(StudentRecord date) {
@@ -37,6 +36,9 @@ public class Student {
         this.address = date.address();
         this.registration = date.registration();
         this.dateBirth = date.dateBirth();
+    }
+
+    public Student() {
     }
 
     public Long getId() {
