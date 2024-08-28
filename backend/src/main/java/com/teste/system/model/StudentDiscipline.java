@@ -1,15 +1,18 @@
 package com.teste.system.model;
 
-import com.teste.system.dto.Student_DisciplineRecord;
+import com.teste.system.dto.StudentDisciplineRecord;
 
+import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToMany;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.Table;
 
-public class Student_Discipline {
+@Entity
+@Table(name = "students_discipline")
+public class StudentDiscipline {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -25,7 +28,9 @@ public class Student_Discipline {
     @JoinColumn(name = "discipline_id")
     private Discipline discipline;
 
-    public Student_Discipline(Student_DisciplineRecord date) {
+    public StudentDiscipline(StudentDisciplineRecord date) {
+        this.student = date.student();
+        this.discipline = date.discipline();
         this.name = date.name();
         this.note = date.note();
         this.frequency = date.frequency();
