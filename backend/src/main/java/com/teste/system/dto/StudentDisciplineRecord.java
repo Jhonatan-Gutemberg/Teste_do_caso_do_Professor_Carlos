@@ -8,6 +8,7 @@ import jakarta.validation.constraints.NotBlank;
 public record StudentDisciplineRecord(Long id,
                 @NotBlank String name,
                 double note,
+                double frequency,
                 Student student,
                 Discipline discipline) {
 

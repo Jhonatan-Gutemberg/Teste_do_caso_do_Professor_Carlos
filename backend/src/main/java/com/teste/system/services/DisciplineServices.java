@@ -5,6 +5,7 @@ import org.springframework.stereotype.Service;
 
 import com.teste.system.Repositories.DisciplineRepository;
 import com.teste.system.model.Discipline;
+import com.teste.system.model.StudentDiscipline;
 
 import java.util.List;
 import java.util.Optional;
@@ -36,6 +37,18 @@ public class DisciplineServices {
 
     public void deleteDiscipline(Long id) {
         disciplineRepository.deleteById(id);
+    }
+
+    public double calculateClassAverage(Long disciplineId) {
+        Optional<Discipline> disciplineOpt = disciplineRepository.findById(disciplineId);
+        if (disciplineOpt.isPresent()) {
+            Discipline discipline = disciplineOpt.get();
+            return discipline.getStudentDisciplines().stream()
+                    .mapToDouble(StudentDiscipline::getNote)
+                    .average()
+                    .orElse(0.0);
+        }
+        return 0.0;
     }
 
 }

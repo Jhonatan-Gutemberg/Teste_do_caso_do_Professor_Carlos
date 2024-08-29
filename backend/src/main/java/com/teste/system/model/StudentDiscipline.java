@@ -1,8 +1,11 @@
 package com.teste.system.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.teste.system.dto.StudentDisciplineRecord;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -12,15 +15,18 @@ import jakarta.persistence.Table;
 
 @Entity
 @Table(name = "students_discipline")
+@JsonIgnoreProperties({"student"})
 public class StudentDiscipline {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String name;
     private double note;
+    private double frequency;
 
     @ManyToOne
     @JoinColumn(name = "student_id")
+    @JsonBackReference
     private Student student;
 
     @ManyToOne
@@ -32,6 +38,7 @@ public class StudentDiscipline {
         this.discipline = date.discipline();
         this.name = date.name();
         this.note = date.note();
+        this.frequency = date.frequency();
     }
 
     public StudentDiscipline() {
@@ -75,6 +82,14 @@ public class StudentDiscipline {
 
     public void setDiscipline(Discipline discipline) {
         this.discipline = discipline;
+    }
+
+    public double getFrequency() {
+        return frequency;
+    }
+
+    public void setFrequency(double frequency) {
+        this.frequency = frequency;
     }
 
 }

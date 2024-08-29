@@ -12,7 +12,6 @@ import java.util.List;
 @RequestMapping("/student-discipline")
 @CrossOrigin("*")
 public class StudentDisciplinaController {
-    
     @Autowired
     private StudentDisciplineRepository studentDisciplineRepository;
 

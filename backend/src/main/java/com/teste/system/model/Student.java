@@ -26,6 +26,8 @@ public class Student {
     private String email;
     private String address;
 
+    private double averageGrade;
+
     private String registration;
     private double frequency;
 
@@ -109,6 +111,28 @@ public class Student {
 
     public void setStudentDisciplines(List<StudentDiscipline> studentDisciplines) {
         StudentDisciplines = studentDisciplines;
+    }
+
+    public double calculateAverageGrade() {
+        return StudentDisciplines.stream()
+                .mapToDouble(StudentDiscipline::getNote)
+                .average()
+                .orElse(0.0);
+    }
+
+    public double calculateFrequency() {
+        return StudentDisciplines.stream()
+                .mapToDouble(StudentDiscipline::getFrequency)
+                .average()
+                .orElse(0.0);
+    }
+
+    public double getAverageGrade() {
+        return averageGrade;
+    }
+
+    public void setAverageGrade(double averageGrade) {
+        this.averageGrade = averageGrade;
     }
 
 }
