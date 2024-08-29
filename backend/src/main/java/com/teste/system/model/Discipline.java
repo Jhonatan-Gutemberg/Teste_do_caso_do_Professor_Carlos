@@ -2,7 +2,6 @@ package com.teste.system.model;
 
 import com.teste.system.dto.DisciplineRecord;
 
-import jakarta.annotation.Generated;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -17,14 +16,15 @@ public class Discipline {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @NotBlank
     private String name;
-    @NotBlank
     private String workload;
 
     public Discipline(DisciplineRecord date) {
         this.name = date.name();
         this.workload = date.workload();
+    }
+
+    public Discipline() {
     }
 
     public Long getId() {

@@ -18,7 +18,6 @@ public class StudentDiscipline {
     private Long id;
     private String name;
     private double note;
-    private double frequency;
 
     @ManyToOne
     @JoinColumn(name = "student_id")
@@ -33,7 +32,9 @@ public class StudentDiscipline {
         this.discipline = date.discipline();
         this.name = date.name();
         this.note = date.note();
-        this.frequency = date.frequency();
+    }
+
+    public StudentDiscipline() {
     }
 
     public Long getId() {
@@ -60,12 +61,20 @@ public class StudentDiscipline {
         this.note = note;
     }
 
-    public double getFrequency() {
-        return frequency;
+    public Student getStudent() {
+        return student;
     }
 
-    public void setFrequency(double frequency) {
-        this.frequency = frequency;
+    public void setStudent(Student student) {
+        this.student = student;
+    }
+
+    public Discipline getDiscipline() {
+        return discipline;
+    }
+
+    public void setDiscipline(Discipline discipline) {
+        this.discipline = discipline;
     }
 
 }

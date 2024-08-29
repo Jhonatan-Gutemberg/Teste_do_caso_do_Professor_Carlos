@@ -9,6 +9,7 @@ public record StudentRecord(Long id,
         String email,
         String address,
         String registration,
+        double frequency,
         Date dateBirth) {
 
 }

@@ -1,7 +1,7 @@
 package com.teste.system.model;
 
 import java.util.Date;
-
+import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.teste.system.dto.StudentRecord;
@@ -10,6 +10,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotBlank;
 
@@ -26,15 +27,20 @@ public class Student {
     private String address;
 
     private String registration;
+    private double frequency;
 
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy")
     private Date dateBirth;
+
+    @OneToMany(mappedBy = "student")
+    private List<StudentDiscipline> StudentDisciplines;
 
     public Student(StudentRecord date) {
         this.name = date.name();
         this.email = date.email();
         this.address = date.address();
         this.registration = date.registration();
+        this.frequency = date.frequency();
         this.dateBirth = date.dateBirth();
     }
 
@@ -87,6 +93,22 @@ public class Student {
 
     public void setDateBirth(Date dateBirth) {
         this.dateBirth = dateBirth;
+    }
+
+    public double getFrequency() {
+        return frequency;
+    }
+
+    public void setFrequency(double frequency) {
+        this.frequency = frequency;
+    }
+
+    public List<StudentDiscipline> getStudentDisciplines() {
+        return StudentDisciplines;
+    }
+
+    public void setStudentDisciplines(List<StudentDiscipline> studentDisciplines) {
+        StudentDisciplines = studentDisciplines;
     }
 
 }
