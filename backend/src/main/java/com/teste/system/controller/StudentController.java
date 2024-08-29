@@ -127,4 +127,10 @@ public class StudentController {
             return ResponseEntity.notFound().build();
         }
     }
+
+    @GetMapping("/below-75-percent-frequency")
+    public ResponseEntity<List<Student>> getStudentsBelow75PercentFrequency() {
+        List<Student> students = studentServices.getStudentsBelow75PercentFrequency();
+        return ResponseEntity.ok(students);
+    }
 }

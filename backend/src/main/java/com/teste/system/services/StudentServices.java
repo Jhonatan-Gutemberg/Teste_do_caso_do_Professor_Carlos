@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 import com.teste.system.Repositories.StudentDisciplineRepository;
 import com.teste.system.Repositories.StudentRepository;
@@ -76,6 +77,15 @@ public class StudentServices {
     public double getStudentFrequency(Long studentId) {
         Student student = studentRepository.findById(studentId).orElseThrow();
         return student.getFrequency();
+    }
+
+    
+
+    
+    public List<Student> getStudentsBelow75PercentFrequency() {
+        return studentRepository.findAll().stream()
+                .filter(student -> student.getFrequency() < 75.0)
+                .collect(Collectors.toList());
     }
 
 }
