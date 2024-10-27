@@ -12,6 +12,10 @@ import java.util.List;
 @RequestMapping("/student-discipline")
 @CrossOrigin("*")
 public class StudentDisciplinaController {
+
+    
+    //Poderia por documentação, colocar nomes para as rotas, exemplo: @PostMapping("/salvar")
+    
     @Autowired
     private StudentDisciplineRepository studentDisciplineRepository;
 

@@ -41,6 +41,11 @@ public class StudentDiscipline {
         this.frequency = date.frequency();
     }
 
+    // Poderia utilizar a notação @NoArgsConstructor para deixar o código mais limpo e entendível
+
+    // Para evitar repetição de código, poderia @getters e @setters que gera os gets e sets automaticamente
+    // sem deixar registro no código.
+
     public StudentDiscipline() {
     }
 

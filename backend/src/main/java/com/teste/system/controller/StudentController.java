@@ -18,6 +18,8 @@ import com.teste.system.services.StudentServices;
 @CrossOrigin("*")
 public class StudentController {
 
+    //Poderia por documentação, colocar nomes para as rotas, exemplo: @PostMapping("/salvar")
+
     @Autowired
     private StudentServices studentServices;
 

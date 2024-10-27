@@ -24,6 +24,11 @@ public class Discipline {
     @OneToMany(mappedBy = "discipline")
     private List<StudentDiscipline> studentDisciplines;
 
+    // Poderia utilizar a notação @NoArgsConstructor para deixar o código mais limpo e entendível
+
+    // Para evitar repetição de código, poderia @getters e @setters que gera os gets e sets automaticamente
+    // sem deixar registro no código.
+    
     public Discipline(DisciplineRecord date) {
         this.name = date.name();
         this.workload = date.workload();

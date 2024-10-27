@@ -1,6 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import './FormPage.css';
+
+
+// O código está muito acoplado, poderia ter sido divido em componentes menores.
+
+// Não é bom misturar a lógica de requisições com as telas, nesse caso seria melhor utilizar uma arquitetura que
+// separasse a exibição de tela do controle de requisições.
  
 const FormPage = () => {
   const [student, setStudent] = useState({

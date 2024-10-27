@@ -37,6 +37,11 @@ public class Student {
     @OneToMany(mappedBy = "student")
     private List<StudentDiscipline> StudentDisciplines;
 
+    // Poderia utilizar a notação @NoArgsConstructor para deixar o código mais limpo e entendível
+
+    // Para evitar repetição de código, poderia @getters e @setters que gera os gets e sets automaticamente
+    // sem deixar registro no código.
+
     public Student(StudentRecord date) {
         this.name = date.name();
         this.email = date.email();
