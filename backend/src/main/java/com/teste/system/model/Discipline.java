@@ -2,6 +2,8 @@ package com.teste.system.model;
 
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.teste.system.dto.DisciplineRecord;
 
 import jakarta.persistence.Entity;
@@ -29,6 +31,7 @@ public class Discipline {
     private String name;
     private String workload;
     @OneToMany(mappedBy = "discipline")
+    @JsonManagedReference
     private List<StudentDiscipline> studentDisciplines;
 
 

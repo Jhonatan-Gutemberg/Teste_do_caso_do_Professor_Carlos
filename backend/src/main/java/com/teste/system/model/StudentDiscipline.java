@@ -39,6 +39,7 @@ public class StudentDiscipline {
 
     @ManyToOne
     @JoinColumn(name = "discipline_id")
+    @JsonBackReference
     private Discipline discipline;
 
 }

@@ -10,13 +10,11 @@
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
  
-/* Cabeçalho principal */
 .header {
   text-align: center;
   margin-bottom: 20px;
 }
  
-/* Botões de navegação */
 .nav-buttons {
   display: flex;
   justify-content: center;
@@ -41,7 +39,6 @@
   background-color: #ccc;
 }
  
-/* Formulários */
 .form-section {
   margin-bottom: 20px;
 }
@@ -89,7 +86,6 @@
   background-color: #0056b3;
 }
  
-/* Lista de registros */
 .records-list {
   margin-top: 20px;
 }
