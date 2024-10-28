@@ -7,8 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import com.teste.system.Repositories.StudentDisciplineRepository;
-import com.teste.system.Repositories.StudentRepository;
+import com.teste.system.Repositories.IStudentDisciplineRepository;
+import com.teste.system.Repositories.IStudentRepository;
 import com.teste.system.model.Student;
 import com.teste.system.model.StudentDiscipline;
 import com.teste.system.services.StudentServices;
@@ -18,18 +18,16 @@ import com.teste.system.services.StudentServices;
 @CrossOrigin("*")
 public class StudentController {
 
-    //Poderia por documentação, colocar nomes para as rotas, exemplo: @PostMapping("/salvar")
-
     @Autowired
     private StudentServices studentServices;
 
     @Autowired
-    private StudentRepository studentRepository;
+    private IStudentRepository studentRepository;
 
     @Autowired
-    private StudentDisciplineRepository studentDisciplineRepository;
+    private IStudentDisciplineRepository studentDisciplineRepository;
 
-    @PostMapping
+    @PostMapping("/register")
     public ResponseEntity<Student> createStudent(@RequestBody Student student) {
         Student createdStudent = studentServices.createStudent(student);
         return new ResponseEntity<>(createdStudent, HttpStatus.CREATED);
@@ -79,7 +77,7 @@ public class StudentController {
         return ResponseEntity.ok(student);
     }
 
-    @GetMapping
+    @GetMapping("/all")
     public ResponseEntity<List<Student>> getAllStudents() {
         List<Student> students = studentServices.getAllStudents();
         return new ResponseEntity<>(students, HttpStatus.OK);

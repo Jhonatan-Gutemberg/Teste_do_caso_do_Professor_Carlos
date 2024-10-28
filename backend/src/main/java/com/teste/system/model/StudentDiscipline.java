@@ -12,10 +12,18 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 @Entity
+@AllArgsConstructor
+@NoArgsConstructor
+@Getter
+@Setter
 @Table(name = "students_discipline")
-@JsonIgnoreProperties({"student"})
+@JsonIgnoreProperties({ "student" })
 public class StudentDiscipline {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -32,69 +40,5 @@ public class StudentDiscipline {
     @ManyToOne
     @JoinColumn(name = "discipline_id")
     private Discipline discipline;
-
-    public StudentDiscipline(StudentDisciplineRecord date) {
-        this.student = date.student();
-        this.discipline = date.discipline();
-        this.name = date.name();
-        this.note = date.note();
-        this.frequency = date.frequency();
-    }
-
-    // Poderia utilizar a notação @NoArgsConstructor para deixar o código mais limpo e entendível
-
-    // Para evitar repetição de código, poderia @getters e @setters que gera os gets e sets automaticamente
-    // sem deixar registro no código.
-
-    public StudentDiscipline() {
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public double getNote() {
-        return note;
-    }
-
-    public void setNote(double note) {
-        this.note = note;
-    }
-
-    public Student getStudent() {
-        return student;
-    }
-
-    public void setStudent(Student student) {
-        this.student = student;
-    }
-
-    public Discipline getDiscipline() {
-        return discipline;
-    }
-
-    public void setDiscipline(Discipline discipline) {
-        this.discipline = discipline;
-    }
-
-    public double getFrequency() {
-        return frequency;
-    }
-
-    public void setFrequency(double frequency) {
-        this.frequency = frequency;
-    }
 
 }

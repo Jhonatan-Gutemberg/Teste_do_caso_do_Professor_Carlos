@@ -4,7 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import com.teste.system.Repositories.StudentDisciplineRepository;
+import com.teste.system.Repositories.IStudentDisciplineRepository;
 import com.teste.system.model.StudentDiscipline;
 import java.util.List;
 
@@ -13,19 +13,16 @@ import java.util.List;
 @CrossOrigin("*")
 public class StudentDisciplinaController {
 
-    
-    //Poderia por documentação, colocar nomes para as rotas, exemplo: @PostMapping("/salvar")
-    
     @Autowired
-    private StudentDisciplineRepository studentDisciplineRepository;
+    private IStudentDisciplineRepository studentDisciplineRepository;
 
-    @PostMapping
+    @PostMapping("/register")
     public ResponseEntity<StudentDiscipline> create(@RequestBody StudentDiscipline studentDiscipline) {
         StudentDiscipline saved = studentDisciplineRepository.save(studentDiscipline);
         return ResponseEntity.ok(saved);
     }
 
-    @GetMapping
+    @GetMapping("/all")
     public List<StudentDiscipline> getAll() {
         return studentDisciplineRepository.findAll();
     }

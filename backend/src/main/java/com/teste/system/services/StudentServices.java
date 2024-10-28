@@ -6,8 +6,8 @@ import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
-import com.teste.system.Repositories.StudentDisciplineRepository;
-import com.teste.system.Repositories.StudentRepository;
+import com.teste.system.Repositories.IStudentDisciplineRepository;
+import com.teste.system.Repositories.IStudentRepository;
 import com.teste.system.model.Student;
 import com.teste.system.model.StudentDiscipline;
 
@@ -15,9 +15,9 @@ import com.teste.system.model.StudentDiscipline;
 public class StudentServices {
 
     @Autowired
-    private StudentRepository studentRepository;
+    private IStudentRepository studentRepository;
     @Autowired
-    private StudentDisciplineRepository studentDisciplinaRepository;;
+    private IStudentDisciplineRepository studentDisciplinaRepository;;
 
     public Student createStudent(Student student) {
         return studentRepository.save(student);

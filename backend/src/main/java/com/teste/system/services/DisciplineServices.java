@@ -3,7 +3,7 @@ package com.teste.system.services;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.teste.system.Repositories.DisciplineRepository;
+import com.teste.system.Repositories.IDisciplineRepository;
 import com.teste.system.model.Discipline;
 import com.teste.system.model.StudentDiscipline;
 
@@ -13,7 +13,7 @@ import java.util.Optional;
 @Service
 public class DisciplineServices {
     @Autowired
-    private DisciplineRepository disciplineRepository;
+    private IDisciplineRepository disciplineRepository;
 
     public Discipline createDiscipline(Discipline discipline) {
         return disciplineRepository.save(discipline);

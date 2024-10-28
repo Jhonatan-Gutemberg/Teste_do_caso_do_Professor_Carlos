@@ -15,18 +15,16 @@ import java.util.Optional;
 @CrossOrigin("*")
 public class DisciplineController {
 
-    //Poderia por documentação, colocar nomes para as rotas, exemplo: @PostMapping("/salvar")
-
     @Autowired
     private DisciplineServices disciplineServices;
 
-    @PostMapping
+    @PostMapping("/register")
     public ResponseEntity<Discipline> createDiscipline(@RequestBody Discipline discipline) {
         Discipline createdDiscipline = disciplineServices.createDiscipline(discipline);
         return new ResponseEntity<>(createdDiscipline, HttpStatus.CREATED);
     }
 
-    @GetMapping
+    @GetMapping("/all")
     public ResponseEntity<List<Discipline>> getAllDisciplines() {
         List<Discipline> disciplines = disciplineServices.getAllDisciplines();
         return new ResponseEntity<>(disciplines, HttpStatus.OK);

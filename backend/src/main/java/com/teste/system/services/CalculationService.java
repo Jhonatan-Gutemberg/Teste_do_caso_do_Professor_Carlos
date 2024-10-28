@@ -2,8 +2,8 @@ package com.teste.system.services;
 
 import com.teste.system.model.Student;
 import com.teste.system.model.StudentDiscipline;
-import com.teste.system.Repositories.StudentRepository;
-import com.teste.system.Repositories.StudentDisciplineRepository;
+import com.teste.system.Repositories.IStudentRepository;
+import com.teste.system.Repositories.IStudentDisciplineRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -15,10 +15,10 @@ import java.util.List;
 public class CalculationService {
 
     @Autowired
-    private StudentRepository studentRepository;
+    private IStudentRepository studentRepository;
     
     @Autowired
-    private StudentDisciplineRepository studentDisciplineRepository;
+    private IStudentDisciplineRepository studentDisciplineRepository;
 
     public void updateAverages() {
         List<Student> students = studentRepository.findAll();

@@ -10,9 +10,16 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
-import jakarta.validation.constraints.NotBlank;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 @Entity
+@AllArgsConstructor
+@NoArgsConstructor
+@Getter
+@Setter
 @Table(name = "discipline")
 public class Discipline {
     @Id
@@ -24,42 +31,6 @@ public class Discipline {
     @OneToMany(mappedBy = "discipline")
     private List<StudentDiscipline> studentDisciplines;
 
-    // Poderia utilizar a notação @NoArgsConstructor para deixar o código mais limpo e entendível
-
-    // Para evitar repetição de código, poderia @getters e @setters que gera os gets e sets automaticamente
-    // sem deixar registro no código.
-    
-    public Discipline(DisciplineRecord date) {
-        this.name = date.name();
-        this.workload = date.workload();
-    }
-
-    public Discipline() {
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getWorkload() {
-        return workload;
-    }
-
-    public void setWorkload(String workload) {
-        this.workload = workload;
-    }
 
     public double calculateAverageGrade() {
         return studentDisciplines.stream()
@@ -68,11 +39,5 @@ public class Discipline {
                 .orElse(0.0);
     }
 
-    public List<StudentDiscipline> getStudentDisciplines() {
-        return studentDisciplines;
-    }
-
-    public void setStudentDisciplines(List<StudentDiscipline> studentDisciplines) {
-        this.studentDisciplines = studentDisciplines;
-    }
+    
 }
